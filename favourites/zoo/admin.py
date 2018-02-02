@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from . import models
+
+admin.site.register(models.Animal)
+admin.site.register(models.Species)
+admin.site.register(models.Location)
+admin.site.register(models.Stay)
