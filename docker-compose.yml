@@ -1,0 +1,19 @@
+version: '2'
+services:
+  django:
+    build:
+      dockerfile: config/Dockerfile
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/opt/django-favourites/
+    links:
+      - postgres:postgres
+    command:
+      - ./run.sh
+
+  postgres:
+    image: postgres:9.5
+    ports:
+      - "54321:5432"
