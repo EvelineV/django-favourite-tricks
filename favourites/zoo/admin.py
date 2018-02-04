@@ -3,11 +3,10 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from . import models
+from . import models, models_sql
 
 
 class AnimalAdmin(admin.ModelAdmin):
-    # todo: add method for transferring a group of animals to a different location. Add current location field
     list_display = ('name', 'species', 'date_of_birth')
     search_fields = ('name',)
     readonly_fields = ('ancestors', 'descendants')
@@ -57,3 +56,8 @@ admin.site.register(models.Animal, AnimalAdmin)
 admin.site.register(models.Species)
 admin.site.register(models.Location)
 admin.site.register(models.Stay)
+
+
+class StaysWithEndDateAdmin(admin.ModelAdmin):
+    readonly_fields = ('id', 'stay', 'animal', 'animal_name', 'location', 'location_name', 'start', 'end')
+admin.site.register(models_sql.StaysWithEndDate, StaysWithEndDateAdmin)
