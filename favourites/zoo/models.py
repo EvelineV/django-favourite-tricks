@@ -34,7 +34,7 @@ class Animal(models.Model):
 
     def get_all_ancestors(self):
         with connection.cursor() as cursor:
-            cursor.execute(sql_methods.get_list_of_ancestors(self.name))
+            cursor.execute(sql_methods.get_list_of_ancestors(), [self.name])
             result = cursor.fetchall()[0][0]
         return result
 

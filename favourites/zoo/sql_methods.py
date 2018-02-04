@@ -22,13 +22,13 @@ def get_family_tree():
     '''
 
 
-def get_list_of_ancestors(name):
+def get_list_of_ancestors():
     return '''
         {recursive}
         SELECT
             path
-        FROM family_tree WHERE name='{name}'
-    '''.format(recursive=get_family_tree(), name=name)
+        FROM family_tree WHERE name=%s
+    '''.format(recursive=get_family_tree())
 
 
 def get_list_of_descendants(name):
