@@ -31,12 +31,12 @@ def get_list_of_ancestors():
     '''.format(recursive=get_family_tree())
 
 
-def get_list_of_descendants(name):
+def get_list_of_descendants():
     return '''
     {recursive}
     SELECT
         id, name
     FROM family_tree
-    WHERE '{name}' = ANY(family_tree.path)
+    WHERE %s = ANY(family_tree.path)
     ORDER BY id
-    '''.format(recursive=get_family_tree(), name=name)
+    '''.format(recursive=get_family_tree())

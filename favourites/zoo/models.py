@@ -28,7 +28,7 @@ class Animal(models.Model):
 
     def get_all_descendants(self):
         with connection.cursor() as cursor:
-            cursor.execute(sql_methods.get_list_of_descendants(self.name))
+            cursor.execute(sql_methods.get_list_of_descendants(), [self.name])
             result = utils.dict_fetch_all(cursor)
         return result
 
