@@ -39,7 +39,7 @@ class Animal(models.Model):
         return result
 
     def save(self, *args, **kwargs):
-        if self.date_of_birth < (self.mother.date_of_birth + timedelta(days=365)):
+        if self.mother and self.date_of_birth < (self.mother.date_of_birth + timedelta(days=365)):
             # todo: make this a parameter for each species.
             raise ValidationError("An animal cannot be born when its mother was less than a year old.")
         super(Animal, self).save(*args, **kwargs)

@@ -14,11 +14,17 @@ class AnimalAdmin(admin.ModelAdmin):
 
     @staticmethod
     def ancestors(obj):
-        return ", ".join([i for i in obj.get_all_ancestors()[:-1]])
+        try:
+            return ", ".join([i for i in obj.get_all_ancestors()[:-1]])
+        except IndexError:
+            return ""
 
     @staticmethod
     def descendants(obj):
-        return ", ".join([i['name'] for i in obj.get_all_descendants() if i['name'] != obj.name])
+        try:
+            return ", ".join([i['name'] for i in obj.get_all_descendants() if i['name'] != obj.name])
+        except IndexError:
+            return ""
 
     class MoveToLocationForm(forms.Form):
         _selected_action = forms.CharField(widget=forms.MultipleHiddenInput)
