@@ -8,6 +8,10 @@ Presented as a cookie talk at my workplace and at February 2018's Stockholm Djan
 + Test examples
 + Admin batch actions
 
+## Run
++ Install docker and docker-compose
++ Run `docker-compose build` and `docker-compose up django` in a terminal. The app will now be running on `localhost:8000/`
+
 ## Shell commands
 + use `docker-compose exec django python manage.py <<management_command>>` to use Django management commands.
 
