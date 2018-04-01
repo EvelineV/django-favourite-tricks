@@ -12,6 +12,9 @@ Presented as a cookie talk at my workplace and at February 2018's Stockholm Djan
 + Install docker and docker-compose
 + Run `docker-compose build` and `docker-compose up django` in a terminal. The app will now be running on `localhost:8000/`
 
+## Test
++ use `docker-compose run --rm django pytest favourites` to run the tests.
+
 ## Shell commands
 + use `docker-compose exec django python manage.py <<management_command>>` to use Django management commands.
 
